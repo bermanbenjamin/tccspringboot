@@ -42,11 +42,11 @@ public class UserController {
 	public static User update(@RequestBody User user) {
 		return userService.update(user);
 	}
-
-	@GetMapping(path = "/")
-	public static ArrayList<User> findAll() {
-		return (ArrayList<User>) userService.findAll();
-	}
+//
+//	@GetMapping(path = "/")
+//	public static ArrayList<User> findAll() {
+//		return (ArrayList<User>) userService.findAll();
+//	}
 
 	@GetMapping(path = "/{id}/followers")
 	public static ArrayList<Long> findFollowers(@RequestBody Long id) {

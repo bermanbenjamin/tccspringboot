@@ -3,27 +3,35 @@ package com.tccspringboot.tccspringboot.model;
 import java.util.ArrayList;
 import java.util.Date;
 
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "users")
 public class User {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "userId")
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
+	@Column  
 	private String name;
 	
+	@Column  
 	private String password;
 	
+	@Column  
 	private ArrayList<Post> posts;
 	
+	@Column  
 	private ArrayList<Long> followers;
 	
+	@Column  
 	private Date birthdate;
 
 	public User(Long id, String name, String password, ArrayList<Post> posts, ArrayList<Long> followers,

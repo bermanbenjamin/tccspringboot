@@ -5,6 +5,9 @@ import com.tccspringboot.tccspringboot.repository.UserRepository;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class UserService {
 
 	private UserRepository userRepository;
