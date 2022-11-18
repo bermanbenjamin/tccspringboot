@@ -21,7 +21,7 @@ public class UserController {
 	@PostMapping(path = "/create")
 	public static ResponseEntity createUser(@RequestBody User user) {
 		try {
-			return ResponseEntity.ok(userService.createUser(user));
+			return ResponseEntity.ok(userService.create(user));
 		} catch (Exception e) {
 			e.printStackTrace();
 			return ResponseEntity.badRequest().body(e.getMessage());
@@ -80,7 +80,7 @@ public class UserController {
 		}
 	}
 
-	@GetMapping(path = "/{id}/follow/{idUserToFollow}")
+	@PutMapping(path = "/{id}/follow/{idUserToFollow}")
 	public static ResponseEntity follow(@RequestBody Long id, @RequestBody Long idUserToFollow) {
 		try {
 			return ResponseEntity.ok(userService.follow(id, idUserToFollow));

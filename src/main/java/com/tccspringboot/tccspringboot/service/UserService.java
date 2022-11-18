@@ -67,7 +67,7 @@ public class UserService {
 	}
 	}
 
-	public List<Long> findFollowers(Long id) {
+	public List<String> findFollowers(Long id) {
 		try {
 			return findById(id).getFollowers();
 		} catch (Exception e) {

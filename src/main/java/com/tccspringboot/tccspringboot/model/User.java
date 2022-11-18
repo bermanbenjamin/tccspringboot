@@ -17,7 +17,7 @@ public class User {
 	@Id
 	@Column(name = "userId")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+	private String id;
 	
 	@Column  
 	private String name;
@@ -26,15 +26,15 @@ public class User {
 	private String password;
 	
 	@Column  
-	private ArrayList<Post> posts;
+	private ArrayList<String> posts;
 	
 	@Column  
-	private ArrayList<Long> followers;
+	private ArrayList<String> followers;
 	
 	@Column  
 	private Date birthdate;
 
-	public User(Long id, String name, String password, ArrayList<Post> posts, ArrayList<Long> followers,
+	public User(String id, String name, String password, ArrayList<String> posts, ArrayList<String> followers,
 			Date birthdate) {
 		super();
 		this.id = id;
@@ -45,11 +45,11 @@ public class User {
 		this.birthdate = birthdate;
 	}
 
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -69,19 +69,19 @@ public class User {
 		this.password = password;
 	}
 
-	public ArrayList<Post> getPosts() {
+	public ArrayList<String> getPosts() {
 		return posts;
 	}
 
-	public void setPosts(ArrayList<Post> posts) {
+	public void setPosts(ArrayList<String> posts) {
 		this.posts = posts;
 	}
 
-	public ArrayList<Long> getFollowers() {
+	public ArrayList<String> getFollowers() {
 		return followers;
 	}
 
-	public void setFollowers(ArrayList<Long> followers) {
+	public void setFollowers(ArrayList<String> followers) {
 		this.followers = followers;
 	}
 

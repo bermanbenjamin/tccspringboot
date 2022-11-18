@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class Health {
 
-    @GetMapping("/")
+    @GetMapping("/health")
     public String health() {
 
         return new Date().toString();
