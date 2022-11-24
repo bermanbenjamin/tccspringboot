@@ -15,5 +15,7 @@ public class Post {
     @Column(name = "postId")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
+  
+    public Post(){}
+    
 }

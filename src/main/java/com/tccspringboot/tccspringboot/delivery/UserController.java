@@ -1,20 +1,23 @@
 package com.tccspringboot.tccspringboot.delivery;
 
-import java.util.ArrayList;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.tccspringboot.tccspringboot.model.User;
+import com.tccspringboot.tccspringboot.service.FollowsService;
 import com.tccspringboot.tccspringboot.service.UserService;
 
-@RestController(value = "/users")
+@RestController
+@RequestMapping("/users")
 public class UserController {
 
 	private static UserService userService;
+	
+	private static FollowsService followsService;
 
-	public UserController(UserService userService) {
-		this.userService = userService;
+	public UserController(UserService userService, FollowsService followsService) {
+		UserController.userService = userService;
+		UserController.followsService = followsService;
 	}
 
 
@@ -51,7 +54,7 @@ public class UserController {
 	}
 
 	@PutMapping(path = "/update")
-	public static ResponseEntity update(@PathVariable User user) {
+	public static ResponseEntity update(@RequestBody User user) {
 		try {
 			return ResponseEntity.ok(userService.update(user));
 		} catch (Exception e) {
@@ -71,9 +74,9 @@ public class UserController {
 	}
 
 	@GetMapping(path = "/{id}/followers")
-	public static ResponseEntity findFollowers(@RequestBody Long id) {
+	public static ResponseEntity findFollowers(@PathVariable Long id) {
 		try {
-			return ResponseEntity.ok(userService.findFollowers(id));
+			return ResponseEntity.ok(followsService.findFollowers(id));
 		} catch (Exception e) {
 			e.printStackTrace();
 			return ResponseEntity.badRequest().body(e.getMessage());
@@ -81,9 +84,9 @@ public class UserController {
 	}
 
 	@PutMapping(path = "/{id}/follow/{idUserToFollow}")
-	public static ResponseEntity follow(@RequestBody Long id, @RequestBody Long idUserToFollow) {
+	public static ResponseEntity follow(@PathVariable  Long id, @PathVariable Long idUserToFollow) {
 		try {
-			return ResponseEntity.ok(userService.follow(id, idUserToFollow));
+			return ResponseEntity.ok(followsService.follow(idUserToFollow, id));
 		} catch (Exception e) {
 			e.printStackTrace();
 			return ResponseEntity.badRequest().body(e.getMessage());
